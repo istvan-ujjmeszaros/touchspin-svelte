@@ -1,19 +1,6 @@
 import { beforeAll } from 'vitest'
-import '@testing-library/jest-dom'
 
-// Mock window.matchMedia
+// Basic setup for Node environment testing
 beforeAll(() => {
-  Object.defineProperty(window, 'matchMedia', {
-    writable: true,
-    value: (query: string) => ({
-      matches: false,
-      media: query,
-      onchange: null,
-      addListener: () => {},
-      removeListener: () => {},
-      addEventListener: () => {},
-      removeEventListener: () => {},
-      dispatchEvent: () => {},
-    }),
-  })
+  // No DOM-specific setup needed for node environment
 })

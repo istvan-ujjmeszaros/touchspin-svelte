@@ -6,12 +6,7 @@ export default defineConfig({
   plugins: [svelte({ hot: !process.env.VITEST })],
   test: {
     globals: true,
-    environment: 'jsdom',
+    environment: 'node',
     setupFiles: ['./src/test/setup.ts'],
-    server: {
-      deps: {
-        inline: ['svelte']
-      }
-    }
   },
 })
