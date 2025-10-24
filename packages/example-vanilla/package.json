@@ -29,7 +29,7 @@
     "vite": "^6.0.11"
   },
   "dependencies": {
-    "@touchspin/svelte": "workspace:*",
+    "@touchspin/svelte": "file:../svelte",
     "svelte": "^5.0.0"
   }
 }

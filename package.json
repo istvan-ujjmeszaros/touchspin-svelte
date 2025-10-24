@@ -3,13 +3,12 @@
   "private": true,
   "version": "1.0.0",
   "workspaces": [
-    "packages/svelte",
-    "packages/example-vanilla"
+    "packages/svelte"
   ],
   "scripts": {
     "dev": "yarn workspace touchspin-svelte-example-vanilla dev",
-    "build": "yarn workspaces foreach -At run build",
-    "test": "yarn workspaces foreach -At run test",
+    "build": "yarn workspace @touchspin/svelte run build",
+    "test": "yarn workspace @touchspin/svelte run test",
     "changeset": "changeset",
     "version-packages": "changeset version && yarn install --mode=update-lockfile",
     "release": "changeset publish",
