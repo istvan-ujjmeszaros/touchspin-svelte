@@ -1,6 +1,6 @@
 {
   "name": "@touchspin/svelte",
-  "version": "5.0.0",
+  "version": "5.0.1",
   "description": "Svelte adapter for TouchSpin with per-renderer subpaths",
   "type": "module",
   "sideEffects": false,
