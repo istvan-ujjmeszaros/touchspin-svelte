@@ -11,6 +11,7 @@
     "test": "yarn workspace @touchspin/svelte run test",
     "changeset": "changeset",
     "version-packages": "changeset version && yarn install --mode=update-lockfile",
+    "version-with-reinstall": "yarn install --immutable && yarn version-packages",
     "release": "changeset publish",
     "prepare": "node scripts/setup-husky.mjs"
   },

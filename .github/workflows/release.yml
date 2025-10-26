@@ -67,7 +67,7 @@ jobs:
       - name: Publish with Changesets
         uses: changesets/action@v1
         with:
-          version: yarn install --immutable && yarn version-packages
+          version: yarn version-with-reinstall
           publish: yarn release
           createGithubReleases: true
         env:
