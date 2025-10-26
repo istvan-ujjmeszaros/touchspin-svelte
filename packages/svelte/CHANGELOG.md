@@ -1,6 +1,6 @@
 # @touchspin/svelte
 
-## 5.0.2
+## 5.0.3
 
 ### Patch Changes
 
@@ -16,6 +16,12 @@
   - Prevents effects from running before instance is initialized
 
   This ensures all reactive effects only run after the component and TouchSpin instance are fully initialized, fixing the "Uncaught Error: https://svelte.dev/e/effect_orphan" error.
+
+## 5.0.2
+
+### Patch Changes
+
+- fix(ci): use npm script instead of shell command chain in workflow
 
 ## 5.0.1
 
