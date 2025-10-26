@@ -38,6 +38,7 @@
 
   let inputRef: HTMLInputElement;
   let instance: ReturnType<typeof TouchSpinCore> | null = null;
+  let isMounted = $state(false);
 
   // Cleanup function
   let cleanup: (() => void) | null = null;
@@ -94,6 +95,9 @@
       instance?.destroy();
       instance = null;
     };
+
+    // Mark as mounted so effects can run
+    isMounted = true;
   });
 
   onDestroy(() => {
@@ -104,14 +108,13 @@
 
   // Update value when prop changes
   $effect(() => {
-    if (instance && value !== undefined) {
-      instance.setValue(value);
-    }
+    if (!isMounted || !instance || value === undefined) return;
+    instance.setValue(value);
   });
 
   // Update settings when props change
   $effect(() => {
-    if (!instance) return;
+    if (!isMounted || !instance) return;
     const updateOptions: Record<string, any> = {};
     if (min !== undefined) updateOptions.min = min;
     if (max !== undefined) updateOptions.max = max;
@@ -124,7 +127,7 @@
 
   // Update disabled/readonly
   $effect(() => {
-    if (!inputRef) return;
+    if (!isMounted || !inputRef) return;
     if (disabled !== undefined) inputRef.disabled = disabled;
     if (readOnly !== undefined) inputRef.readOnly = readOnly;
   });
