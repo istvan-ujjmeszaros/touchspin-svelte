@@ -1,5 +1,14 @@
 # @touchspin/svelte
 
+## 5.0.4
+
+### Patch Changes
+
+- fix: align runtime interop with Svelte 5
+
+  - prevent bundling a private copy of the Svelte client runtime so `$effect` hooks share the app's context
+  - regenerate the generated typings to use the `Component` return type so `bind:this` exposes the imperative handle
+
 ## 5.0.3
 
 ### Patch Changes

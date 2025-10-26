@@ -10,12 +10,14 @@ function generateDts(): Plugin {
     name: 'generate-dts',
     closeBundle() {
       // Generate vanilla.d.ts with proper type exports
-      const vanillaDts = `import type { SvelteComponent } from 'svelte';
+      const vanillaDts = `import type { Component } from 'svelte';
 import type { TouchSpinProps, TouchSpinEvents, TouchSpinHandle, TouchSpinChangeMeta } from './types';
 
 export type { TouchSpinProps, TouchSpinEvents, TouchSpinHandle, TouchSpinChangeMeta };
 
-export default class TouchSpin extends SvelteComponent<TouchSpinProps, TouchSpinEvents> {}
+declare const TouchSpin: Component<TouchSpinProps, TouchSpinHandle, 'value'>;
+
+export default TouchSpin;
 `;
       writeFileSync(resolve(__dirname, 'dist/vanilla.d.ts'), vanillaDts);
 
@@ -41,7 +43,13 @@ export default defineConfig({
       fileName: (format, entryName) => `${entryName}.js`,
     },
     rollupOptions: {
-      external: ['svelte', '@touchspin/core', '@touchspin/renderer-vanilla'],
+      external: [
+        'svelte',
+        'svelte/internal',
+        'svelte/internal/client',
+        '@touchspin/core',
+        '@touchspin/renderer-vanilla',
+      ],
     },
   },
 });
